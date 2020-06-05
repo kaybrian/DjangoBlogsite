@@ -73,7 +73,7 @@
             <div class="post-entry-2 d-flex bg-light">
               <div class="thumbnail" style="background-image: url('{{trend.imageUrl}}')"></div>
               <div class="contents">
-                <h2><a href="blog-single.html">{{trend.title}}</a></h2>
+                <h2><a href="{% url 'personalblog:trending-post' trend.id %}">{{trend.title}}</a></h2>
                 <div class="post-meta">
                   <span class="d-block"><a href="#">{{trend.authorPrest}}</a> in <a href="#">{{trend.tag}}</a></span>
                   <span class="date-read">{{trend.date_Created}} <span class="mx-1">&bullet;</span> Quick Read <span

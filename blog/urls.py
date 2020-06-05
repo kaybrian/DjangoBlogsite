@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 
 app_name = 'personalblog'
 urlpatterns = [
-    path('',views.index,name='index')
+    path('',views.index,name='index'),
+    path('trending-post/<str:pk>/',views.PostDetail,name='trending-post')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
