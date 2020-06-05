@@ -59,8 +59,7 @@ class Trending(models.Model):
             url = ''
         return url
 
-
-class TrendingBig(models.Model):
+class Posts(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
     author = models.CharField(max_length=50,null=True,blank=True)
@@ -86,3 +85,11 @@ class TrendingBig(models.Model):
         except:
             url = ''
         return url
+
+
+
+class Newsletter(models.Model):
+    email = models.EmailField(max_length=254)
+
+    def __str__(self):
+        return self.email
