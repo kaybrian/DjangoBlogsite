@@ -6,13 +6,14 @@ from django.db import models
 class EditorsPick(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
-    author = models.CharField(max_length=50,null=True,blank=True)
+    author = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50)
     date_Created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='Editors_pick')
 
     def __str__(self):
         return self.title
+
     @property
     def authorPrest(self):
         try:
@@ -28,21 +29,19 @@ class EditorsPick(models.Model):
         except:
             url = ''
         return url
-
-
 
 
 class Trending(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
-    author = models.CharField(max_length=50,null=True,blank=True)
+    author = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50)
     date_Created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='Trends')
-   
 
     def __str__(self):
         return self.title
+
     @property
     def authorPrest(self):
         try:
@@ -58,18 +57,19 @@ class Trending(models.Model):
         except:
             url = ''
         return url
+
 
 class Posts(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
-    author = models.CharField(max_length=50,null=True,blank=True)
+    author = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50)
     date_Created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='Trends')
-   
 
     def __str__(self):
         return self.title
+
     @property
     def authorPrest(self):
         try:
@@ -85,7 +85,6 @@ class Posts(models.Model):
         except:
             url = ''
         return url
-
 
 
 class Newsletter(models.Model):
@@ -93,3 +92,13 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class CommentsTrending(models.Model):
+    post = models.ForeignKey(Trending, on_delete=models.CASCADE)
+    name = models.CharField(max_length=350)
+    comment = models.CharField(max_length=5550)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
