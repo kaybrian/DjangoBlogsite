@@ -3,7 +3,7 @@ from .models import *
 from .forms import *
 # Create your views here.
 
-
+# this is the main index part that you can you see 
 def index(request):
     editors = EditorsPick.objects.all().order_by('date_Created')[:3]
     trends = Trending.objects.all().order_by('-date_Created')[:6]
@@ -26,7 +26,7 @@ def index(request):
     }
     return render(request, 'blog/index.html', context)
 
-
+# for the single Trending posts part 
 def PostDetail(request, pk):
     trend_post = Trending.objects.get(id=pk)
     comments = CommentsTrending.objects.filter(post=trend_post).order_by('-id')
@@ -44,6 +44,8 @@ def PostDetail(request, pk):
     return render(request, 'blog/blog-single.html', context)
 
 
+
+# this is the part for the single posts blog part 
 def PostOnly(request, pk):
     Postsneeded = Posts.objects.get(id=pk)
     comments = CommentsPosts.objects.filter(post=Postsneeded).order_by('-id')
@@ -60,3 +62,8 @@ def PostOnly(request, pk):
     }
     return render(request, 'blog/postSingle.html', context)
 
+def inovate(request):
+    innovation = Posts.objects.filter(
+        tag='Innovation').order_by('-date_Created')[:9]
+    context = {'innovation':innovation}
+    return render(request,'blog/innovations.html',context)
