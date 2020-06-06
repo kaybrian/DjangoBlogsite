@@ -29,10 +29,16 @@ def index(request):
 
 def PostDetail(request, pk):
     trend_post = Trending.objects.get(id=pk)
-    comments = CommentsTrending.objects.all().order_by('-id')
+    comments = CommentsTrending.objects.filter(post=trend_post).order_by('-id')
+    if request.method == 'POST':
+        name = request.POST['Name']
+        email = request.POST['email']
+        comment = request.POST['comment']
+        
+        CommentsTrending.objects.create(post=trend_post,name=name,email=email,comment=comment)
+
     context = {
         'trend_post': trend_post,
-        'comments':comments
-        
+        'comments': comments
     }
     return render(request, 'blog/blog-single.html', context)
