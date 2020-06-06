@@ -100,5 +100,6 @@ class CommentsTrending(models.Model):
     comment = models.CharField(max_length=5550)
     date_created = models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
         return self.name

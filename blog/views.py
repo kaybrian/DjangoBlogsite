@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from .forms import *
 # Create your views here.
 
 
@@ -28,7 +29,10 @@ def index(request):
 
 def PostDetail(request, pk):
     trend_post = Trending.objects.get(id=pk)
+    comments = CommentsTrending.objects.all().order_by('-id')
     context = {
         'trend_post': trend_post,
+        'comments':comments
+        
     }
     return render(request, 'blog/blog-single.html', context)
