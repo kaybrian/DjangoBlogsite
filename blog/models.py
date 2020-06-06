@@ -116,3 +116,16 @@ class CommentsPosts(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Contact(models.Model):
+    fName = models.CharField(max_length=250)
+    lName = models.CharField(max_length=250)
+    email = models.EmailField( max_length=254)
+    Tel = models.CharField(max_length=15)
+    Message = models.TextField()
+    date_created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.fname + self.lName
+    
