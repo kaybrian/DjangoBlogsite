@@ -87,3 +87,6 @@ def inspirations(request):
     context = {'inspiration': inspiration}
     return render(request, 'blog/inspiration.html', context)
 
+def ContactMe(request):
+    context = {}
+    return render(request,'blog/contact.html',context)
