@@ -88,5 +88,13 @@ def inspirations(request):
     return render(request, 'blog/inspiration.html', context)
 
 def ContactMe(request):
+    if request.method == 'POST':
+        fname = request.POST['First_name']
+        lname = request.POST['Last_name']
+        email = request.POST['email']
+        number = request.POST['Telnon']
+        message = request.POST['Message']
+        sendmessage = ContactForm(fName=fname,lName=lname,email=email,Tel=number,Message=message)
+        sendmessage.save()
     context = {}
     return render(request,'blog/contact.html',context)
