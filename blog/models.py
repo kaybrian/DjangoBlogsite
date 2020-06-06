@@ -104,3 +104,15 @@ class CommentsTrending(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CommentsPosts(models.Model):
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    name = models.CharField(max_length=350)
+    email = models.EmailField(max_length=254,null=True,blank=True)
+    comment = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.name

@@ -42,3 +42,21 @@ def PostDetail(request, pk):
         'comments': comments
     }
     return render(request, 'blog/blog-single.html', context)
+
+
+def PostOnly(request, pk):
+    Postsneeded = Posts.objects.get(id=pk)
+    comments = CommentsPosts.objects.filter(post=Postsneeded).order_by('-id')
+    if request.method == 'POST':
+        name = request.POST['Name']
+        email = request.POST['email']
+        comment = request.POST['comment']
+        
+        CommentsPosts.objects.create(post=Postsneeded,name=name,email=email,comment=comment)
+
+    context = {
+        'trend_post': Postsneeded,
+        'comments': comments
+    }
+    return render(request, 'blog/postSingle.html', context)
+

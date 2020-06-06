@@ -157,7 +157,7 @@
       <div class="img-bg" style="background-image: url('{{trend.imageUrl}}')"></div>
       <div class="contents">
         <span class="caption">Week's Top Story</span>
-        <h2><a href="blog-single.html">{{trend.title}}</a></h2>
+        <h2><a href="{% url 'personalblog:trending-post' trend.id %}">{{trend.title}}</a></h2>
         <p class="mb-3">{{trend.description}}</p>
 
         <div class="post-meta">
@@ -184,7 +184,7 @@
         <div class="post-entry-2 d-flex">
           <div class="thumbnail" style="background-image: url('{{program.imageUrl}}')"></div>
           <div class="contents">
-            <h2><a href="blog-single.html">{{program.title}}</a></h2>
+            <h2><a href="{% url 'personalblog:post-Details' program.id %}">{{program.title}}</a></h2>
             <p class="mb-3">{{program.description}}</p>
             <div class="post-meta">
               <span class="d-block"><a href="#">{{program.authorPrest}}</a> in <a href="#">{{program.tag}}</a></span>
@@ -204,7 +204,7 @@
         <div class="post-entry-2 d-flex">
           <div class="thumbnail" style="background-image: url('{{invo.imageUrl}}')"></div>
           <div class="contents">
-            <h2><a href="blog-single.html">{{invo.title}}</a></h2>
+            <h2><a href="{% url 'personalblog:post-Details' invo.id %}">{{invo.title}}</a></h2>
             <p class="mb-3">{{invo.description}}</p>
             <div class="post-meta">
               <span class="d-block"><a href="#">{{invo.authorPrest}}</a> in <a href="#">{{invo.tag}}</a></span>
