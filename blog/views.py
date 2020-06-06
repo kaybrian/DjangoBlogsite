@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from django.contrib import messages
 from .forms import *
 # Create your views here.
 
@@ -94,7 +95,8 @@ def ContactMe(request):
         email = request.POST['email']
         number = request.POST['Telnon']
         message = request.POST['Message']
-        sendmessage = ContactForm(fName=fname,lName=lname,email=email,Tel=number,Message=message)
-        sendmessage.save()
+
+        Contact.objects.create(fName=fname,lName=lname,email=email,Tel=number,Message=message)
+        messages.info(request, "Thank you for Contacting me, :"+fname + " "+lname)
     context = {}
     return render(request,'blog/contact.html',context)

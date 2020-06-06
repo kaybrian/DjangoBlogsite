@@ -127,5 +127,5 @@ class Contact(models.Model):
     date_created = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.fname + self.lName
+        return self.fName +" "+ self.lName
     
